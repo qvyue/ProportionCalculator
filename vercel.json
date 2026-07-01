@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/proportion/examples",
+      "destination": "/proportion/examples/index.html"
+    }
+  ]
+}
