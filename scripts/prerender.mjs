@@ -15,12 +15,12 @@ const pages = [
     title: 'Proportion Calculator',
     description:
       'Proportion calculator helps find equivalent proportions given three of the four parts of the two ratios.',
-    canonical: 'https://proportion-calculator.com/',
+    canonical: 'https://www.proportion-calculator.com/',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
       name: 'Proportion Calculator',
-      url: 'https://proportion-calculator.com/',
+      url: 'https://www.proportion-calculator.com/',
       applicationCategory: 'EducationalApplication',
       operatingSystem: 'Any',
       description:
@@ -43,12 +43,12 @@ const pages = [
     title: 'Proportion Examples with Answers',
     description:
       'Practice proportion examples with answers and step-by-step solutions for missing values, word problems, recipe scaling, map scale, and unit price.',
-    canonical: 'https://proportion-calculator.com/proportion/examples',
+    canonical: 'https://www.proportion-calculator.com/proportion/examples',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'LearningResource',
       name: 'Proportion Examples with Answers',
-      url: 'https://proportion-calculator.com/proportion/examples',
+      url: 'https://www.proportion-calculator.com/proportion/examples',
       description:
         'Practice proportion examples with answers and step-by-step solutions for missing values, word problems, recipe scaling, map scale, and unit price.',
       learningResourceType: 'Practice problems',

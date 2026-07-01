@@ -32,10 +32,10 @@ Deploy the full `dist` folder as a static site.
 
 These production URLs should return `200`:
 
-- `https://proportion-calculator.com/`
-- `https://proportion-calculator.com/proportion/examples`
-- `https://proportion-calculator.com/robots.txt`
-- `https://proportion-calculator.com/sitemap.xml`
+- `https://www.proportion-calculator.com/`
+- `https://www.proportion-calculator.com/proportion/examples`
+- `https://www.proportion-calculator.com/robots.txt`
+- `https://www.proportion-calculator.com/sitemap.xml`
 
 The site is prerendered, so `/proportion/examples` should return
 `dist/proportion/examples/index.html` directly on refresh.

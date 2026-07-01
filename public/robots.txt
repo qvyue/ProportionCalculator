@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://proportion-calculator.com/sitemap.xml
+Sitemap: https://www.proportion-calculator.com/sitemap.xml

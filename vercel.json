@@ -1,5 +1,18 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "proportion-calculator.com"
+        }
+      ],
+      "destination": "https://www.proportion-calculator.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/proportion/examples",
