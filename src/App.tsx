@@ -30,6 +30,9 @@ function HomePage() {
     let frameId = 0
     let lastScrollY = window.scrollY
     let currentTop: number | null = null
+    const desktopQuery = window.matchMedia('(min-width: 1024px)')
+    let resizeObserver: ResizeObserver | null = null
+    let isDesktopActive = false
 
     const getStickyBounds = () => {
       const topGap = 96
@@ -50,12 +53,6 @@ function HomePage() {
     const updateCalculatorTop = ({ reset = false }: { reset?: boolean } = {}) => {
       window.cancelAnimationFrame(frameId)
       frameId = window.requestAnimationFrame(() => {
-        if (window.innerWidth < 1024) {
-          currentTop = null
-          setCalculatorTop(null)
-          return
-        }
-
         if (currentTop === null || reset) {
           currentTop = getStickyBounds().minTop
         }
@@ -77,18 +74,49 @@ function HomePage() {
 
     const handleResize = () => updateCalculatorTop()
 
-    updateCalculatorTop({ reset: true })
+    const enableDesktopSticky = () => {
+      if (isDesktopActive) return
 
-    const resizeObserver = new ResizeObserver(() => updateCalculatorTop())
-    resizeObserver.observe(calculator)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleResize)
+      isDesktopActive = true
+      lastScrollY = window.scrollY
+      resizeObserver = new ResizeObserver(() => updateCalculatorTop())
+      resizeObserver.observe(calculator)
+      window.addEventListener('scroll', handleScroll, { passive: true })
+      window.addEventListener('resize', handleResize)
+      updateCalculatorTop({ reset: true })
+    }
+
+    const disableDesktopSticky = () => {
+      if (!isDesktopActive) return
+
+      isDesktopActive = false
+      window.cancelAnimationFrame(frameId)
+      resizeObserver?.disconnect()
+      resizeObserver = null
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+      currentTop = null
+      setCalculatorTop(null)
+    }
+
+    const handleBreakpointChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        enableDesktopSticky()
+      } else {
+        disableDesktopSticky()
+      }
+    }
+
+    if (desktopQuery.matches) {
+      enableDesktopSticky()
+    }
+
+    desktopQuery.addEventListener('change', handleBreakpointChange)
 
     return () => {
       window.cancelAnimationFrame(frameId)
-      resizeObserver.disconnect()
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleResize)
+      desktopQuery.removeEventListener('change', handleBreakpointChange)
+      disableDesktopSticky()
     }
   }, [])
 
