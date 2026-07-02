@@ -128,13 +128,13 @@ function HomePage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-start">
           {/* Article with collapsible TOC */}
-          <div className="lg:col-span-7 xl:col-span-7">
+          <div className="order-2 lg:order-1 lg:col-span-7 xl:col-span-7">
             <TableOfContents items={tocItems} defaultCollapsed />
             <Article />
           </div>
 
           {/* Right sidebar - Calculator */}
-          <div className="lg:col-span-5 xl:col-span-5 lg:self-stretch">
+          <div className="order-1 lg:order-2 lg:col-span-5 xl:col-span-5 lg:self-stretch">
             <div
               ref={calculatorRef}
               className="lg:sticky"
