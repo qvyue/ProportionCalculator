@@ -1,15 +1,40 @@
 <!doctype html>
+<!--
+  项目入口 HTML 文件
+  Vite 构建时以此为入口，自动注入打包后的 JS/CSS 引用
+  <div id="root"> 是 React 应用的挂载点，类似于 Java 的 main 方法入口
+-->
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GT34PCXRHT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GT34PCXRHT');
+    </script>
     <meta charset="UTF-8" />
+    <!-- SVG favicon：橙色背景 + "P" 字母，无需额外图片资源 -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- 移动端视口适配：禁止缩放，宽度跟随设备 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- SEO 元描述：Google 搜索结果中显示的摘要文字 -->
     <meta name="description" content="Proportion calculator helps find equivalent proportions given three of the four parts of the two ratios." />
+    <!-- Canonical URL：告诉搜索引擎此页面的唯一规范地址，避免重复内容惩罚 -->
     <link rel="canonical" href="https://www.proportion-calculator.com/" />
+    <!-- 页面标题：SEO 最重要的 on-page 因素，包含目标关键词 "Proportion Calculator" -->
     <title>Proportion Calculator</title>
   </head>
   <body>
+    <!-- React 应用挂载点：所有 React 组件最终渲染到这个 div 内 -->
     <div id="root"></div>
+    <!--
+      type="module" 表示 ES Module 方式加载
+      Vite 开发模式下直接加载 src/main.tsx（支持 HMR 热更新）
+      生产构建时 Vite 会替换为打包后的 JS 文件路径
+    -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
